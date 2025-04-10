@@ -76,19 +76,6 @@ public abstract class MinecraftClientMixin {
         } else if (Objects.equals(targetWorld.getRegistryKey().getValue().toString(), DimensionTypes.THE_END_ID.toString())) {
             timer.tryInsertNewTimeline("enter_end");
         }
-
-        //Enter Nether
-        if (timer.getCategory() == RunCategories.ENTER_NETHER && Objects.equals(targetWorld.getRegistryKey().getValue().toString(), DimensionTypes.THE_NETHER_ID.toString())) {
-            InGameTimer.complete();
-            return;
-        }
-
-        //Enter End
-        if (timer.getCategory() == RunCategories.ENTER_END && Objects.equals(targetWorld.getRegistryKey().getValue().toString(), DimensionTypes.THE_END_ID.toString())) {
-            InGameTimer.complete();
-        }
-
-        RunCategories.checkAllBossesCompleted();
     }
 
     private int saveTickCount = 0;

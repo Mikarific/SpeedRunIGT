@@ -28,7 +28,7 @@ public class TimerInitializePacket extends TimerPacket<TimerInitializePacket> {
             this.category = timer.getCategory();
         } else {
             this.runType = RunType.RANDOM_SEED;
-            this.category = RunCategories.ANY;
+            this.category = RunCategories.KILL_DRAGON;
         }
     }
 

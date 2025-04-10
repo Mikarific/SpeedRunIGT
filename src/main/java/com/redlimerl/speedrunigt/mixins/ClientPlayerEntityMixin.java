@@ -88,19 +88,6 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
             timer.checkConditions();
         }
 
-        //HIGH%
-        if (timer.getCategory() == RunCategories.HIGH && this.getY() >= 420) {
-            InGameTimer.complete();
-            return;
-        }
-
-        //Full Inventory
-        if (timer.getCategory() == RunCategories.FULL_INV) {
-            if (this.getInventory().getMainStacks().stream().filter(itemStack -> itemStack != null && itemStack != ItemStack.EMPTY && itemStack.getItem() != Items.AIR).map(ItemStack::getItem).distinct().toArray().length == 36)
-                InGameTimer.complete();
-            return;
-        }
-
         for (ItemStack itemStack : playerItemList) {
             int shells = 0;
 
@@ -124,78 +111,6 @@ public abstract class ClientPlayerEntityMixin extends AbstractClientPlayerEntity
                 timer.updateMoreData(1541, shells);
             }
 
-
-
-            //Stack of Lime Wool
-            if (timer.getCategory() == RunCategories.STACK_OF_LIME_WOOL) {
-                if (itemStack.getItem() == Items.LIME_WOOL && itemStack.getCount() == 64) InGameTimer.complete();
-            }
-        }
-
-        List<Item> items = this.getInventory().getMainStacks().stream().map(ItemStack::getItem).toList();
-        List<Item> armors = new ArrayList<>();
-        for (Int2ObjectMap.Entry<EquipmentSlot> entry : PlayerInventory.EQUIPMENT_SLOTS.int2ObjectEntrySet()) {
-            if (entry.getValue().getType() == EquipmentSlot.Type.HUMANOID_ARMOR) {
-                armors.add(this.getInventory().getStack(entry.getIntKey()).getItem());
-            }
-        }
-
-        //All Workstations
-        if (timer.getCategory() == RunCategories.ALL_WORKSTATIONS) {
-            if (items.contains(Items.BLAST_FURNACE) &&
-                    items.contains(Items.SMOKER) &&
-                    items.contains(Items.CARTOGRAPHY_TABLE) &&
-                    items.contains(Items.BREWING_STAND) &&
-                    items.contains(Items.COMPOSTER) &&
-                    items.contains(Items.BARREL) &&
-                    items.contains(Items.FLETCHING_TABLE) &&
-                    items.contains(Items.CAULDRON) &&
-                    items.contains(Items.LECTERN) &&
-                    items.contains(Items.STONECUTTER) &&
-                    items.contains(Items.LOOM) &&
-                    items.contains(Items.SMITHING_TABLE) &&
-                    items.contains(Items.GRINDSTONE)) {
-                InGameTimer.complete();
-            }
-        }
-
-        //All Swords
-        if (timer.getCategory() == RunCategories.ALL_SWORDS) {
-            if (items.contains(Items.STONE_SWORD) &&
-                    items.contains(Items.DIAMOND_SWORD) &&
-                    items.contains(Items.GOLDEN_SWORD) &&
-                    items.contains(Items.IRON_SWORD) &&
-                    items.contains(Items.NETHERITE_SWORD) &&
-                    items.contains(Items.WOODEN_SWORD)) {
-                InGameTimer.complete();
-            }
-        }
-
-        //All Minerals
-        if (timer.getCategory() == RunCategories.ALL_MINERALS) {
-            if (items.contains(Items.COAL) &&
-                    items.contains(Items.IRON_INGOT) &&
-                    items.contains(Items.GOLD_INGOT) &&
-                    items.contains(Items.DIAMOND) &&
-                    items.contains(Items.REDSTONE) &&
-                    items.contains(Items.LAPIS_LAZULI) &&
-                    items.contains(Items.EMERALD) &&
-                    items.contains(Items.QUARTZ) &&
-                    items.contains(Items.NETHERITE_INGOT) &&
-                    items.contains(Items.COPPER_INGOT) &&
-                    items.contains(Items.AMETHYST_SHARD)) {
-                InGameTimer.complete();
-            }
-        }
-
-        //Iron Armors & lvl 15
-        if (timer.getCategory() == RunCategories.FULL_IA_15_LVL) {
-            if (armors.contains(Items.IRON_HELMET) &&
-                    armors.contains(Items.IRON_CHESTPLATE) &&
-                    armors.contains(Items.IRON_BOOTS) &&
-                    armors.contains(Items.IRON_LEGGINGS) && this.experienceLevel >= 15) {
-                InGameTimer.complete();
-            }
         }
     }
 

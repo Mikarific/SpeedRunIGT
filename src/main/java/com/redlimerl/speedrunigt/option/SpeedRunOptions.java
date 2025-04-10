@@ -12,11 +12,11 @@ import java.util.Objects;
 
 @SuppressWarnings("Convert2Diamond")
 public class SpeedRunOptions {
-    public static final OptionArgument<RunCategory> TIMER_CATEGORY = new OptionArgument<RunCategory>(Identifier.of(SpeedRunIGT.MOD_ID, "timer_category_v7"), RunCategories.ANY) {
+    public static final OptionArgument<RunCategory> TIMER_CATEGORY = new OptionArgument<RunCategory>(Identifier.of(SpeedRunIGT.MOD_ID, "timer_category_v7"), RunCategories.KILL_DRAGON) {
         @Override
         public RunCategory valueFromString(String string) {
             RunCategory category = RunCategory.getCategory(string);
-            return category == RunCategories.ERROR_CATEGORY ? RunCategories.ANY : category;
+            return category == RunCategories.ERROR_CATEGORY ? RunCategories.KILL_DRAGON : category;
         }
 
         @Override

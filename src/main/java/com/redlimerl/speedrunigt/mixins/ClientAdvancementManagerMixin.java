@@ -77,24 +77,12 @@ public abstract class ClientAdvancementManagerMixin {
                 timer.checkConditions();
             }
 
-            //How Did We Get Here
-            if (timer.getCategory() == RunCategories.HOW_DID_WE_GET_HERE && Objects.equals(advancement.getAdvancementEntry().id().toString(), Identifier.of("nether/all_effects").toString())) {
+            // At the Rim of the Sky
+            if (timer.getCategory() == RunCategories.KILL_DRAGON && Objects.equals(advancement.getAdvancementEntry().id().toString(), Identifier.of("feats/ender_dragon").toString())) {
                 InGameTimer.complete();
-            }
-
-            //Hero of Village
-            if (timer.getCategory() == RunCategories.HERO_OF_VILLAGE && Objects.equals(advancement.getAdvancementEntry().id().toString(), Identifier.of("adventure/hero_of_the_village").toString())) {
-                InGameTimer.complete();
-            }
-
-            //Arbalistic
-            if (timer.getCategory() == RunCategories.ARBALISTIC && Objects.equals(advancement.getAdvancementEntry().id().toString(), Identifier.of("adventure/arbalistic").toString())) {
-                InGameTimer.complete();
-            }
-
-            //Cover Me In Debris
-            if (timer.getCategory() == RunCategories.COVER_ME_IN_DEBRIS && Objects.equals(advancement.getAdvancementEntry().id().toString(), Identifier.of("nether/netherite_armor").toString())) {
-                InGameTimer.complete();
+            } else {
+                // write logs for retime in case the runner was on the wrong category, using any% retime logic
+                InGameTimer.writeTimerLogs(InGameTimer.getInstance(), true);
             }
         }
         return entry;
@@ -109,16 +97,6 @@ public abstract class ClientAdvancementManagerMixin {
         // All Advancements
         if (timer.getStatus() != TimerStatus.NONE && timer.getCategory() == RunCategories.ALL_ADVANCEMENTS) {
             if (this.getCompleteAdvancementsCount() >= maxCount) InGameTimer.complete();
-        }
-
-        // Half%
-        if (timer.getStatus() != TimerStatus.NONE && timer.getCategory() == RunCategories.HALF) {
-            if (this.getCompleteAdvancementsCount() >= MathHelper.ceil(maxCount / 2.0f)) InGameTimer.complete();
-        }
-
-        // PogLoot Quater
-        if (timer.getStatus() != TimerStatus.NONE && timer.getCategory() == RunCategories.POGLOOT_QUATER) {
-            if (this.getCompleteAdvancementsCount() >= MathHelper.ceil(maxCount / 4.0f)) InGameTimer.complete();
         }
     }
 

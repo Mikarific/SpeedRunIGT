@@ -22,7 +22,8 @@ public class TimerPacketUtils {
     }
 
     public static void sendServer2ClientPacket(MinecraftServer server, TimerPacket<?> packet) {
-        for (ServerPlayerEntity player : server.getPlayerManager().getPlayerList()) sendServer2ClientPacket(player, packet);
+        if (server.getGameInstance() == null) return;
+        for (ServerPlayerEntity player : server.getGameInstance().getPlayerManager().getPlayerList()) sendServer2ClientPacket(player, packet);
     }
 
     public static void sendServer2ClientPacket(ServerPlayerEntity player, TimerPacket<?> packet) {

@@ -48,7 +48,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
     public void onChangeDimension(TeleportTarget target, CallbackInfoReturnable<Entity> cir) {
         beforeWorld = this.getServerWorld();
         lastPortalPos = this.getPos();
-        InGameTimerUtils.IS_CAN_WAIT_WORLD_LOAD = !InGameTimer.getInstance().isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.ANY;
+        InGameTimerUtils.IS_CAN_WAIT_WORLD_LOAD = !InGameTimer.getInstance().isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.KILL_DRAGON;
     }
 
     @Inject(method = "teleportTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;onDimensionChanged(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER))
@@ -59,7 +59,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         InGameTimer timer = InGameTimer.getInstance();
         if (timer.getStatus() != TimerStatus.NONE) {
             if (oldRegistryKey == World.OVERWORLD && newRegistryKey == World.NETHER) {
-                if (!timer.isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.ANY)
+                if (!timer.isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.KILL_DRAGON)
                     InGameTimerUtils.IS_CAN_WAIT_WORLD_LOAD = InGameTimerUtils.isLoadableBlind(World.NETHER, target.position().add(0, 0, 0), lastPortalPos.add(0, 0, 0));
             }
 
@@ -78,7 +78,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
                         timer.tryInsertNewTimeline("nether_travel_blind");
                     }
                 }
-                if (!timer.isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.ANY)
+                if (!timer.isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.KILL_DRAGON)
                     InGameTimerUtils.IS_CAN_WAIT_WORLD_LOAD = isNewPortal;
             }
         }
@@ -90,6 +90,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
                 .filter(Objects::nonNull) // Remove nulls
                 .map(ItemStack::getItem) // Turn each item stack into its item
                 .collect(Collectors.toSet()); // Collect to a set of items that the player has
-        return currentItemTypes.contains(Items.ENDER_EYE) || (currentItemTypes.contains(Items.ENDER_PEARL) && (currentItemTypes.contains(Items.BLAZE_ROD) || currentItemTypes.contains(Items.BLAZE_POWDER)));
+        return currentItemTypes.contains(Items.ENDER_PEARL) && (currentItemTypes.contains(Items.BLAZE_ROD) || currentItemTypes.contains(Items.BLAZE_POWDER));
     }
 }

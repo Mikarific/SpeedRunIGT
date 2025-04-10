@@ -7,8 +7,9 @@ import com.redlimerl.speedrunigt.timer.category.InvalidCategoryException;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.ServerStatHandler;
 import net.minecraft.stat.Stats;
 import org.jetbrains.annotations.Nullable;
@@ -52,9 +53,10 @@ public class InGameTimerClientUtils {
 
     public static Long getPlayerTime() {
         MinecraftServer server = MinecraftClient.getInstance().getServer();
-        PlayerEntity player = MinecraftClient.getInstance().player;
-        if (server != null && player != null) {
-            ServerStatHandler statHandler = server.getPlayerManager().createStatHandler(player);
+        ClientPlayerEntity clientPlayer = MinecraftClient.getInstance().player;
+        if (server != null && server.getGameInstance() != null && clientPlayer != null) {
+            ServerPlayerEntity player = server.getGameInstance().getPlayerManager().getPlayer(clientPlayer.getUuid());
+            ServerStatHandler statHandler = server.getGameInstance().getPlayerManager().createStatHandler(player);
             return statHandler == null ? null : statHandler.getStat(Stats.CUSTOM.getOrCreateStat(Stats.PLAY_TIME)) * 50L;
         }
         return null;

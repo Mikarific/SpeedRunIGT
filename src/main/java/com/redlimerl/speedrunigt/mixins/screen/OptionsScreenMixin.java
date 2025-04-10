@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class OptionsScreenMixin extends Screen {
     private static final Identifier ENDER_PEARL = Identifier.of("textures/item/ender_pearl.png");
     private static final Identifier BLAZE_POWDER = Identifier.of("textures/item/blaze_powder.png");
-    private static final Identifier ENDER_EYE = Identifier.of("textures/item/ender_eye.png");
+    private static final Identifier EXIT_EYE = Identifier.of("textures/item/exit_eye.png");
 
     private ButtonWidget timerButton;
 
@@ -43,7 +43,7 @@ public class OptionsScreenMixin extends Screen {
         if (this.client != null) {
             context.getMatrices().push();
             context.getMatrices().translate(-.5f, -.5f, 0);
-            context.drawTexture(RenderLayer::getGuiTextured, timerButton.isHovered() ? ENDER_EYE : SpeedRunIGTUpdateChecker.UPDATE_STATUS == SpeedRunIGTUpdateChecker.UpdateStatus.OUTDATED ? BLAZE_POWDER : ENDER_PEARL,
+            context.drawTexture(RenderLayer::getGuiTextured, timerButton.isHovered() ? EXIT_EYE : SpeedRunIGTUpdateChecker.UPDATE_STATUS == SpeedRunIGTUpdateChecker.UpdateStatus.OUTDATED ? BLAZE_POWDER : ENDER_PEARL,
                     timerButton.getX() + 2, timerButton.getY() + 2, 0.0F, 0.0F, 16, 16, 16, 16);
             context.getMatrices().pop();
         }

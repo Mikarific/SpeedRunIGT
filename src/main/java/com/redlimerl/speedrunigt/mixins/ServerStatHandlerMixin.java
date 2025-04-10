@@ -51,12 +51,6 @@ public abstract class ServerStatHandlerMixin extends StatHandler {
 
         if (timer.getStatus() == TimerStatus.NONE || timer.getStatus() == TimerStatus.COMPLETED_LEGACY) return;
 
-        // All Blocks
-        if (timer.getCategory() == RunCategories.ALL_BLOCKS) {
-            if (RunCategories.ALL_BLOCKS.isCompleted(this.server))
-                InGameTimer.complete();
-        }
-
         if (this.updateTick++ > 20) {
             InGameTimerUtils.updateStatsJson(timer);
             this.updateTick = 0;

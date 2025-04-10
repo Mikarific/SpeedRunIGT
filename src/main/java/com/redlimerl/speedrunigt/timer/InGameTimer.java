@@ -74,7 +74,7 @@ public class InGameTimer implements Serializable {
 
     String worldName;
     final UUID uuid = UUID.randomUUID();
-    private String category = RunCategories.ANY.getID();
+    private String category = RunCategories.KILL_DRAGON.getID();
     private final boolean isResettable;
     private boolean isCompleted = false;
     boolean isServerIntegrated = true;
@@ -298,8 +298,8 @@ public class InGameTimer implements Serializable {
             }
         });
 
-        if (SpeedRunOption.getOption(SpeedRunOptions.AUTO_SAVE_PLAYER_DATA) && InGameTimerUtils.getServer() != null && !anyPercentSplit) {
-            InGameTimerUtils.getServer().getPlayerManager().saveAllPlayerData();
+        if (SpeedRunOption.getOption(SpeedRunOptions.AUTO_SAVE_PLAYER_DATA) && InGameTimerUtils.getServer() != null && InGameTimerUtils.getServer().getGameInstance() != null && !anyPercentSplit) {
+            InGameTimerUtils.getServer().getGameInstance().getPlayerManager().saveAllPlayerData();
         }
     }
 

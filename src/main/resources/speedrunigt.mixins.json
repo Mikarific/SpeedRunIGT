@@ -4,7 +4,6 @@
   "plugin": "com.redlimerl.speedrunigt.SpeedRunIGTMixinPlugin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "EndPortalBlockMixin",
     "LivingEntityMixin",
     "PlayerAdvancementTrackerMixin",
     "SeedCommandMixin",
@@ -37,7 +36,6 @@
     "retime.OptionScreenMixin",
     "retime.OptionSliderWidgetMixin",
     "retime.SodiumOptionImplMixin",
-    "screen.CreditsScreenMixin",
     "screen.DownloadingTerrainScreenMixin",
     "screen.GameMenuScreenMixin",
     "screen.GeneratorOptionsMixin",

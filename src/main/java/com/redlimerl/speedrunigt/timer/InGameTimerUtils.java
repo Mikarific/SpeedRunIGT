@@ -194,8 +194,8 @@ public class InGameTimerUtils {
     public static void updateStatsJson(InGameTimer timer) {
         JsonObject jsonObject = new JsonObject();
         MinecraftServer server = getServer();
-        if (timer.isServerIntegrated && server != null && server.getPlayerManager() != null) {
-            ArrayList<ServerPlayerEntity> serverPlayerEntities = Lists.newArrayList(server.getPlayerManager().getPlayerList());
+        if (timer.isServerIntegrated && server != null && server.getGameInstance() != null && server.getGameInstance().getPlayerManager() != null) {
+            ArrayList<ServerPlayerEntity> serverPlayerEntities = Lists.newArrayList(server.getGameInstance().getPlayerManager().getPlayerList());
             for (ServerPlayerEntity serverPlayerEntity : serverPlayerEntities) {
                 jsonObject.add(serverPlayerEntity.getUuidAsString(), SpeedRunIGT.GSON.fromJson(((ServerStatHandlerAccessor) serverPlayerEntity.getStatHandler()).invokeAsString(), JsonObject.class));
             }
@@ -205,7 +205,7 @@ public class InGameTimerUtils {
 
     public static boolean isHardcoreWorld() {
         if (SpeedRunIGT.IS_CLIENT_SIDE) return InGameTimerClientUtils.isHardcoreWorld();
-        return SpeedRunIGT.DEDICATED_SERVER.isHardcore();
+        return SpeedRunIGT.DEDICATED_SERVER.getGameInstance() != null && SpeedRunIGT.DEDICATED_SERVER.getGameInstance().isHardcore();
     }
 
     public static String getMinecraftVersion() {
@@ -281,19 +281,19 @@ public class InGameTimerUtils {
 
     public static int getCurrentWorldDefaultGameMode() {
         MinecraftServer server = getServer();
-        if (server == null) return GameMode.SURVIVAL.getIndex();
-        return server.getDefaultGameMode().getIndex();
+        if (server == null || server.getGameInstance() == null) return GameMode.SURVIVAL.getIndex();
+        return server.getGameInstance().getDefaultGameMode().getIndex();
     }
 
     public static boolean isCurrentWorldCheatAvailable() {
         MinecraftServer server = getServer();
-        if (server == null) return false;
-        return server.getPlayerManager().areCheatsAllowed();
+        if (server == null || server.getGameInstance() == null) return false;
+        return server.getGameInstance().getPlayerManager().areCheatsAllowed();
     }
 
     public static Difficulty getCurrentDifficulty() {
         MinecraftServer server = getServer();
-        if (server == null) { return Difficulty.EASY; }
-        return server.getSaveProperties().getDifficulty();
+        if (server == null || server.getGameInstance() == null) { return Difficulty.EASY; }
+        return server.getGameInstance().getSaveProperties().getDifficulty();
     }
 }

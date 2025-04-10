@@ -312,7 +312,7 @@ public class TimerDrawer {
         }
 
         long igt = timer.isCompleted() && SpeedRunOption.getOption(SpeedRunOptions.AUTO_RETIME_FOR_GUIDELINE)
-                && timer.getCategory() == RunCategories.ANY && timer.getRunType() == RunType.RANDOM_SEED
+                && timer.getCategory() == RunCategories.KILL_DRAGON && timer.getRunType() == RunType.RANDOM_SEED
                 && (System.currentTimeMillis() / 3000) % 2 == 0
                 ? timer.getRetimedInGameTime() : timer.getInGameTime();
         return Text.literal((this.simply ? "" : "IGT: ") + getTimeFormat(igt));

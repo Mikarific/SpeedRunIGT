@@ -24,7 +24,7 @@ public class SpeedRunIGTUpdateChecker {
         }
         new Thread(() -> {
             try {
-                URL u = new URL("https://api.github.com/repos/RedLime/SpeedRunIGT/releases");
+                URL u = new URL("https://api.github.com/repos/Mikarific/SpeedRunIGT/releases");
                 HttpURLConnection c = (HttpURLConnection) u.openConnection();
 
                 c.setConnectTimeout(10000);

@@ -25,24 +25,4 @@ public abstract class ServerWorldMixin extends World {
     protected ServerWorldMixin(MutableWorldProperties properties, RegistryKey<World> registryRef, DynamicRegistryManager registryManager, RegistryEntry<DimensionType> dimensionEntry, boolean isClient, boolean debugWorld, long seed, int maxChainedNeighborUpdates) {
         super(properties, registryRef, registryManager, dimensionEntry, isClient, debugWorld, seed, maxChainedNeighborUpdates);
     }
-
-    @Override
-    public boolean setBlockState(BlockPos pos, BlockState state, int flags) {
-        boolean result = super.setBlockState(pos, state, flags);
-
-        InGameTimer timer = InGameTimer.getInstance();
-        if (!this.isClient() && flags == 2 && state.getBlock() == Blocks.END_PORTAL && Objects.equals(getRegistryKey().getValue().toString(), DimensionTypes.OVERWORLD_ID.toString())) {
-            for (RunPortalPos runPortalPos : timer.getEndPortalPosList()) {
-                if (runPortalPos.squaredDistanceTo(pos) < 100) {
-                    return result;
-                }
-            }
-            SpeedRunIGT.debug("Detected serverworld end portal");
-            timer.getEndPortalPosList().add(new RunPortalPos(pos));
-            timer.tryInsertNewTimeline("portal_no_"+timer.getEndPortalPosList().size());
-            InGameTimerUtils.IS_KILLED_ENDER_DRAGON = false;
-        }
-
-        return result;
-    }
 }
