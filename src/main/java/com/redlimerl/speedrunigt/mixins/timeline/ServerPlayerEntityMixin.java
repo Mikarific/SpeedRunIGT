@@ -41,17 +41,17 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
         super(world, pos, yaw, gameProfile);
     }
 
-    private ServerWorld beforeWorld = null;
-    private Vec3d lastPortalPos = null;
+    @Unique private ServerWorld beforeWorld = null;
+    @Unique private Vec3d lastPortalPos = null;
 
-    @Inject(method = "teleportTo", at = @At("HEAD"))
+    @Inject(method = "teleportTo*", at = @At("HEAD"))
     public void onChangeDimension(TeleportTarget target, CallbackInfoReturnable<Entity> cir) {
         beforeWorld = this.getServerWorld();
         lastPortalPos = this.getPos();
         InGameTimerUtils.IS_CAN_WAIT_WORLD_LOAD = !InGameTimer.getInstance().isCoop() && InGameTimer.getInstance().getCategory() == RunCategories.KILL_DRAGON;
     }
 
-    @Inject(method = "teleportTo", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;onDimensionChanged(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER))
+    @Inject(method = "teleportTo*", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;onDimensionChanged(Lnet/minecraft/entity/Entity;)V", shift = At.Shift.AFTER))
     public void onChangedDimension(TeleportTarget target, CallbackInfoReturnable<Entity> cir) {
         RegistryKey<World> oldRegistryKey = beforeWorld.getRegistryKey();
         RegistryKey<World> newRegistryKey = getServerWorld().getRegistryKey();

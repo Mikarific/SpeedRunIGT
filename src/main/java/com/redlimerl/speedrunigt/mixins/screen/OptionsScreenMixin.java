@@ -11,17 +11,18 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(OptionsScreen.class)
 public class OptionsScreenMixin extends Screen {
-    private static final Identifier ENDER_PEARL = Identifier.of("textures/item/ender_pearl.png");
-    private static final Identifier BLAZE_POWDER = Identifier.of("textures/item/blaze_powder.png");
-    private static final Identifier EXIT_EYE = Identifier.of("textures/item/exit_eye.png");
+    @Unique private static final Identifier ENDER_PEARL = Identifier.of("textures/item/ender_pearl.png");
+    @Unique private static final Identifier BLAZE_POWDER = Identifier.of("textures/item/blaze_powder.png");
+    @Unique private static final Identifier EXIT_EYE = Identifier.of("textures/item/exit_eye.png");
 
-    private ButtonWidget timerButton;
+    @Unique private ButtonWidget timerButton;
 
     protected OptionsScreenMixin(Text title) {
         super(title);

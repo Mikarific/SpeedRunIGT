@@ -7,7 +7,6 @@ import com.google.gson.JsonObject;
 import com.redlimerl.speedrunigt.timer.InGameTimer;
 import com.redlimerl.speedrunigt.timer.InGameTimerUtils;
 import com.redlimerl.speedrunigt.timer.TimerStatus;
-import com.redlimerl.speedrunigt.timer.category.RunCategories;
 import com.redlimerl.speedrunigt.timer.category.condition.CategoryCondition;
 import com.redlimerl.speedrunigt.timer.category.condition.StatCategoryCondition;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
@@ -21,6 +20,7 @@ import net.minecraft.stat.StatType;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -31,9 +31,7 @@ import java.util.Map;
 @Mixin(ServerStatHandler.class)
 public abstract class ServerStatHandlerMixin extends StatHandler {
 
-    @Shadow @Final private MinecraftServer server;
-
-    private int updateTick = 0;
+    @Unique private int updateTick = 0;
 
     @Inject(method = "setStat", at = @At("TAIL"))
     public void onUpdate(PlayerEntity player, Stat<?> stat, int value, CallbackInfo ci) {
@@ -57,7 +55,8 @@ public abstract class ServerStatHandlerMixin extends StatHandler {
         }
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked", "ConstantConditions"})
+    @Unique
+    @SuppressWarnings({"rawtypes", "ConstantConditions"})
     private JsonObject getStatJson() {
         HashMap<StatType, JsonObject> map = Maps.newHashMap();
         for (Object2IntMap.Entry entry : this.statMap.object2IntEntrySet()) {

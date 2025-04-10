@@ -7,7 +7,6 @@ import com.redlimerl.speedrunigt.timer.packet.packets.TimerInitializePacket;
 import com.redlimerl.speedrunigt.timer.packet.packets.TimerStartPacket;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.GameInstance;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ConnectedClientData;
 import net.minecraft.server.network.ServerPlayerEntity;

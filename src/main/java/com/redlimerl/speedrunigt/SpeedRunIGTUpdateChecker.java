@@ -9,6 +9,7 @@ import net.fabricmc.loader.impl.util.version.VersionPredicateParser;
 
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -24,7 +25,7 @@ public class SpeedRunIGTUpdateChecker {
         }
         new Thread(() -> {
             try {
-                URL u = new URL("https://api.github.com/repos/Mikarific/SpeedRunIGT/releases");
+                URL u = (new URI("https://api.github.com/repos/Mikarific/SpeedRunIGT/releases")).toURL();
                 HttpURLConnection c = (HttpURLConnection) u.openConnection();
 
                 c.setConnectTimeout(10000);
@@ -32,7 +33,7 @@ public class SpeedRunIGTUpdateChecker {
 
                 InputStreamReader r = new InputStreamReader(c.getInputStream(), StandardCharsets.UTF_8);
                 JsonElement jsonElement = JsonParser.parseReader(r);
-                if (jsonElement.getAsJsonArray().size() == 0) {
+                if (jsonElement.getAsJsonArray().isEmpty()) {
                     UPDATE_STATUS = UpdateStatus.UNKNOWN;
                 } else {
                     for (JsonElement element : jsonElement.getAsJsonArray()) {

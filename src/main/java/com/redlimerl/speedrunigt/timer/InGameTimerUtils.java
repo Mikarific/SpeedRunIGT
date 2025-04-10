@@ -77,7 +77,7 @@ public class InGameTimerUtils {
     }
 
     public static String logListToString(List<?> arrayList, int completeCount) {
-        if (arrayList.size() == 0) return "";
+        if (arrayList.isEmpty()) return "";
         StringBuilder stringBuilder = new StringBuilder();
         if (completeCount > 0) {
             stringBuilder.append("/* The timer/log is segmented. If you need previous logs, check the igt_freeze").append(InGameTimer.getLogSuffix(completeCount - 1)).append(" file.").append(" */\n");
@@ -94,7 +94,7 @@ public class InGameTimerUtils {
     }
 
     public static String pauseLogListToString(List<TimerPauseLog> arrayList, boolean makeHeader, int completeCount) {
-        if (arrayList.size() == 0) return "";
+        if (arrayList.isEmpty()) return "";
 
         StringBuilder stringBuilder = new StringBuilder();
         if (completeCount > 0) {

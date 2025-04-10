@@ -9,6 +9,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
+import net.minecraft.server.GameInstance;
 
 public class TimerPackets {
     public static void init() {
@@ -30,8 +31,14 @@ public class TimerPackets {
             ClientPlayNetworking.registerGlobalReceiver(id,
                     (payload, context) -> payload.receiveServer2ClientPacket(context.client()));
         }
-        ServerPlayNetworking.registerGlobalReceiver(id,
-                (payload, context) -> payload.receiveClient2ServerPacket(context.player().method_69130().getServer()));
+        ServerPlayNetworking.registerGlobalReceiver(id, (payload, context) -> {
+            try (GameInstance gameInstance = context.player().method_69130()) {
+                payload.receiveClient2ServerPacket(gameInstance.getServer());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        });
     }
 
 }

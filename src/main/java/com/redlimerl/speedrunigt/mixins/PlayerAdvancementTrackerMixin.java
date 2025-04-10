@@ -8,6 +8,7 @@ import com.redlimerl.speedrunigt.timer.packet.TimerPacketUtils;
 import com.redlimerl.speedrunigt.timer.packet.packets.TimerAchieveCriteriaPacket;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.PlayerAdvancementTracker;
+import net.minecraft.server.GameInstance;
 import net.minecraft.server.ServerAdvancementLoader;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -50,7 +51,13 @@ public abstract class PlayerAdvancementTrackerMixin {
 
         if (timer.getStatus() != TimerStatus.NONE) {
             timer.tryInsertNewAdvancement(advancement.id().toString(), criteriaKey, advancement.value().display().isPresent());
-            if (timer.isCoop()) TimerPacketUtils.sendServer2ClientPacket(owner.method_69130().getServer(), new TimerAchieveCriteriaPacket(advancement.id().toString(), criteriaKey, advancement.value().display().isPresent()));
+            if (timer.isCoop()) {
+                try (GameInstance gameInstance = owner.method_69130()) {
+                    TimerPacketUtils.sendServer2ClientPacket(gameInstance.getServer(), new TimerAchieveCriteriaPacket(advancement.id().toString(), criteriaKey, advancement.value().display().isPresent()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
