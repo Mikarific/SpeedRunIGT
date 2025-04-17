@@ -40,6 +40,7 @@
   "speedrunigt.option.timer_category.unknown": "未知类别",
   "speedrunigt.option.timer_category.warning": "有几个不受支持的类别，稍后将添加。  ",
   "speedrunigt.option.timer_category.kill_dragon": "杀死末影龙",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "全进度",
   "speedrunigt.option.timer_category.custom": "自定义",
   "speedrunigt.option.hide_timer_in_options": "在设置中隐藏计时器",

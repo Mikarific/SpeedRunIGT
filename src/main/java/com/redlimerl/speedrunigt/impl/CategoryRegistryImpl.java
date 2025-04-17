@@ -16,6 +16,7 @@ public class CategoryRegistryImpl implements SpeedRunIGTApi {
         list.add(KILL_DRAGON);
         list.add(CUSTOM);
         list.add(PracticeTimerManager.PRACTICE_CATEGORY);
+        list.add(ALL_MINE_INGREDIENTS);
         list.add(ALL_ADVANCEMENTS);
         return list;
     }

@@ -33,6 +33,7 @@
   "speedrunigt.option.timer_category": "計時器類別",
   "speedrunigt.option.timer_category.unknown": "未知類別",
   "speedrunigt.option.timer_category.kill_dragon": "殺死終界龍",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "全進度",
   "speedrunigt.option.timer_category.custom": "自訂",
   "speedrunigt.option.safe_font_mode": "安全字體模式",

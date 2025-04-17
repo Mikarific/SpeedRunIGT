@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "Неизвестная категория",
   "speedrunigt.option.timer_category.warning": "Есть несколько категорий, которые будут добавлены позже.",
   "speedrunigt.option.timer_category.kill_dragon": "Убить дракона",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "Все достижения",
   "speedrunigt.option.timer_category.custom": "Своё",
   "speedrunigt.option.hide_timer_in_options": "Скрыть таймер в настройках",

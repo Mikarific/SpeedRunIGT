@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "Bilinmeyen Kategori",
   "speedrunigt.option.timer_category.warning": "Birkaç desteklenmeyen kategori var, sonra eklenecekler.",
   "speedrunigt.option.timer_category.kill_dragon": "Ejderhayı Öldür",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "Tüm Gelişmeler",
   "speedrunigt.option.timer_category.custom": "Özel",
   "speedrunigt.option.hide_timer_in_options": "Ayarlarda Zamanlayıcı Gizle",

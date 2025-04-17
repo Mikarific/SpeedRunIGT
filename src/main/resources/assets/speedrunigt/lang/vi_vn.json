@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "Thể loại không xác định",
   "speedrunigt.option.timer_category.warning": "Có một số thể loại chưa được hỗ trợ, sẽ được thêm vào sau ",
   "speedrunigt.option.timer_category.kill_dragon": "Giết Rồng",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "Tất cả thành tựu",
   "speedrunigt.option.timer_category.custom": "Tuỳ chỉnh",
   "speedrunigt.option.hide_timer_in_options": "Giấu Timer trong Tùy chọn",

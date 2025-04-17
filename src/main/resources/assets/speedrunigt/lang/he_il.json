@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "קטגוריה לא ידועה",
   "speedrunigt.option.timer_category.warning": "ישנן מספר קטגוריות שאינן נתמכות, שיוספו בעתיד",
   "speedrunigt.option.timer_category.kill_dragon": "Kill Dragon%%",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "כל ההישגים",
   "speedrunigt.option.timer_category.custom": "מותאם אישית",
   "speedrunigt.option.hide_timer_in_options": "החבא טיימר בהגדרות",

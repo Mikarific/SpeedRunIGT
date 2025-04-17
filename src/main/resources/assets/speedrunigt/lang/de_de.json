@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "Unbekannte Kategorie",
   "speedrunigt.option.timer_category.warning": "Es gibt mehrere nicht unterstützte Kategorien, die später hinzugefügt werden.",
   "speedrunigt.option.timer_category.kill_dragon": "Kill Dragon%%",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "All Advancements",
   "speedrunigt.option.timer_category.custom": "Benutzerdefiniert",
   "speedrunigt.option.hide_timer_in_options": "Timer in den Optionen verbergen",

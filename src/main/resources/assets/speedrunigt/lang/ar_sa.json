@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "Category غير معروفة",
   "speedrunigt.option.timer_category.warning": "هناك عدة فئات غير مدعومة ، سيتم إضافتها لاحقاً.",
   "speedrunigt.option.timer_category.kill_dragon": "أي%%",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "جميع التقدمات",
   "speedrunigt.option.timer_category.custom": "مُخصّص",
   "speedrunigt.option.hide_timer_in_options": "إخفاء المؤقت في الخيارات",

@@ -45,6 +45,7 @@
   "speedrunigt.option.timer_category.unknown": "不明なカテゴリ",
   "speedrunigt.option.timer_category.warning": "未対応のカテゴリがいくつかあります。今後追加される予定です。",
   "speedrunigt.option.timer_category.kill_dragon": "Kill Dragon%%",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "All Advancements",
   "speedrunigt.option.timer_category.custom": "カスタム",
   "speedrunigt.option.hide_timer_in_options": "設定内のタイマーを非表示",

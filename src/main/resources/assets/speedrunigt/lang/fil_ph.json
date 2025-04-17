@@ -44,6 +44,7 @@
   "speedrunigt.option.timer_category.unknown": "Hindi kilalang kategorya",
   "speedrunigt.option.timer_category.warning": "Mayroong ilang mga hindi sinusuportahang kategorya, na idaragdag sa ibang pagkakataon.",
   "speedrunigt.option.timer_category.kill_dragon": "Patayin ang Dragon",
+  "speedrunigt.option.timer_category.all_mine_ingredients": "All Mine Ingredients",
   "speedrunigt.option.timer_category.all_advancements": "Lahat na Advancements",
   "speedrunigt.option.hide_timer_in_options": "Itago ang Timer sa Opsyons",
   "speedrunigt.option.hide_timer_in_debugs": "Itago ang Timer sa F3",

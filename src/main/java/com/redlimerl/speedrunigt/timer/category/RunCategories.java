@@ -15,6 +15,7 @@ public class RunCategories {
                     (SpeedRunOption.getOption(SpeedRunOptions.ALWAYS_USE_AUTO_RETIME) || timer.getInGameTime(false) < 1000 * 60 * 13);
     public static RunCategory KILL_DRAGON = new RunCategory("KILL_DRAGON","mc_af");
     public static RunCategory CUSTOM = new RunCategory("CUSTOM","mc_af#");
+    public static RunCategory ALL_MINE_INGREDIENTS = RunCategoryBuilder.create("ALL_MINE_INGREDIENTS","mc_af#All_Mine_Ingredients", "speedrunigt.option.timer_category.all_mine_ingredients").build();
     public static RunCategory ALL_ADVANCEMENTS = RunCategoryBuilder.create("ALL_ADVANCEMENTS","mc_af#All_Advancements", "speedrunigt.option.timer_category.all_advancements")
             .setCanSegment(true).build();
 }
