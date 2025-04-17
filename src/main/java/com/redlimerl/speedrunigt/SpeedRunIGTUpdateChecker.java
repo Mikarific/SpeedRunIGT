@@ -42,7 +42,7 @@ public class SpeedRunIGTUpdateChecker {
                             for (JsonElement asset : versionData.get("assets").getAsJsonArray()) {
                                 JsonObject assetData = asset.getAsJsonObject();
                                 String versionName = assetData.get("name").getAsString();
-                                String targetVersionName = versionName.split("\\+")[0].split("-")[1];
+                                String targetVersionName = versionName.substring(versionName.indexOf("-") + 1).split("\\+")[0];
                                 String currentVersionName = SpeedRunIGT.MOD_VERSION.split("\\+")[0];
                                 String currentMCVersionName = SpeedRunIGT.MOD_VERSION.split("\\+")[1];
                                 if (versionName.endsWith(currentMCVersionName + ".jar") &&
